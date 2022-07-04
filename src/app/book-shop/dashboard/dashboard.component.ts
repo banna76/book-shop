@@ -1,4 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { Apollo, gql, QueryRef} from 'apollo-angular';
+import { Book } from '../../../mock-data/models';
+
+/**
+ * get server current time
+ */
+ export const GET_ALL_BOOKS =  gql`
+ query getBooks{
+  books {
+    title
+    author {
+      firstName
+      lastName
+    }
+    description
+    price
+    currency
+  }
+  
+  authors{
+    firstName
+    lastName
+  }
+	
+	orders{
+		title
+		price
+	}
+}`;
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +37,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private apollo:Apollo) { }
 
+  books: Book[] = [];
   ngOnInit(): void {
+    this.getAllBooks();
   }
 
+  /**
+   * get all books
+   */
+  getAllBooks(){
+    this.apollo.watchQuery({
+      query: GET_ALL_BOOKS,
+      fetchPolicy: 'no-cache',
+      errorPolicy: 'all'
+    }).valueChanges
+    .subscribe((result: any) => {
+      if("books" in result.data){
+        this.books = result.data['books'];
+        console.log(this.books);
+      }
+    });
+  }
 }

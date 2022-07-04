@@ -1,1 +1,6 @@
-<p>dashboard works!</p>
+<div *ngIf="books">
+    <div *ngFor="let book of books">
+        {{book?.title}} -{{book?.price}}{{book?.currency}}
+    </div>
+</div>
+TEST DASHBOARD
