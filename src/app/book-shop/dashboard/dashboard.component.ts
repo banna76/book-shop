@@ -12,21 +12,13 @@ import { Book } from '../../../mock-data/models';
     author {
       firstName
       lastName
+      thumbnail
     }
     description
     price
     currency
+    thumbnail
   }
-  
-  authors{
-    firstName
-    lastName
-  }
-	
-	orders{
-		title
-		price
-	}
 }`;
 
 

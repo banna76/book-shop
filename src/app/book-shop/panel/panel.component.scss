@@ -1,0 +1,25 @@
+.nav__icon {
+    width: 20px;
+    height: 20px;
+}
+.title-price{
+  font-size: 20px;
+  color: darkred;
+  margin: 0 5px;
+}
+
+.panel-div{
+    text-align: center;
+    border:1px solid rgb(173, 173, 173);
+    max-width: 400px;
+    min-width: 400px;
+    overflow: hidden;
+    margin: 10px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+    min-height: 300px;
+    cursor: pointer;
+    &:hover{
+      transform: scale(1.05);
+      box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+    }
+  }

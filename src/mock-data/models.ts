@@ -1,14 +1,14 @@
 export interface Author{
     firstName: string
     lastName: string
-    thumbnail: string
+    thumbnail: any
 }
 
 export interface  Book {
     title: string
     description: string
     price: number
-    thumbnail: string
+    thumbnail: any
     currency: string
     author: Author
 }

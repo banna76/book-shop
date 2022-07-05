@@ -1,0 +1,8 @@
+<mat-card class="card-div" *ngIf="inputcard">
+    <img [src]="inputcard?.thumbnail" width="100">
+    <div style="margin-top:10px; min-height: 38px">{{inputcard?.title | slice:0:35 }}</div>
+    <div style="display:flex;justify-content:center;margin-top: 5px;">
+        <div class="title-price">{{inputcard?.price}}{{inputcard?.currency}}</div>
+        <button mat-button><mat-icon class="nav__icon" svgIcon="cart"></mat-icon></button>
+    </div>
+</mat-card>

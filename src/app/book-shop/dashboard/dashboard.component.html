@@ -1,6 +1,18 @@
-<div *ngIf="books">
-    <div *ngFor="let book of books">
-        {{book?.title}} -{{book?.price}}{{book?.currency}}
+<div>
+    <div>
+        <h1> To Collection </h1>
+        <div *ngIf="books" class="slide">
+            <div *ngFor="let book of books">
+                <app-card [inputcard]="book"></app-card>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h1> More Collection </h1>
+        <div *ngIf="books" class="panel">
+            <div *ngFor="let book of books">
+                <app-panel [inputpanel]="book"></app-panel>
+            </div>
+        </div>
     </div>
 </div>
-TEST DASHBOARD
