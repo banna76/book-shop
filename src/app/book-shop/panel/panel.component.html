@@ -1,8 +1,27 @@
 <mat-card class="panel-div" *ngIf="inputpanel">
     <img [src]="inputpanel?.thumbnail" width="100">
-    <div style="margin-top:10px; min-height: 38px">{{inputpanel?.title | slice:0:35 }}</div>
-    <div style="display:flex;justify-content:center;margin-top: 5px;">
-        <div class="title-price">{{inputpanel?.price}}{{inputpanel?.currency}}</div>
-        <button mat-button><mat-icon class="nav__icon" svgIcon="cart"></mat-icon></button>
+    <div style="margin-top:10px; min-height: 38px">{{inputpanel?.title }}</div>
+    <div class="grid2">
+        <div>
+            <div class="title-price">{{inputpanel?.price}}{{inputpanel?.currency}}</div>
+            <div style="font-size:small;">Price incl. {{(inputpanel.price * 0.07) | number : '1.2-2'}} € (7%) VAT</div>
+        </div>
+        
+        <div>
+            <button mat-button class="basket-btn"> Add to Basket</button>  
+        </div>
+    </div>
+    <div style="margin: 20px 0 10px;display: flex;">
+        <div class="image-cropper">
+            <img [src]="inputpanel?.author?.thumbnail" width="60" height="60">
+        </div>
+        <div style="margin: 10px 0 0 20px;">
+            <div style="font-weight:bold;text-align: left;"> Author </div>
+            <div style="color:rgb(0, 149, 255);font-weight: bold;"> {{inputpanel?.author?.firstName}} {{inputpanel?.author?.lastName}}</div>
+        </div>
+    </div>
+    <div style="text-align:left;">
+        <div style="font-weight:bold;margin:5px 0"> Description </div>
+        <div>{{inputpanel?.description}}</div>
     </div>
 </mat-card>

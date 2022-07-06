@@ -18,7 +18,8 @@ export class AppComponent {
   registerIcons() {
     const icons = [
       'cart',
-      'book'
+      'book',
+      'shopping'
     ];
 
     icons.forEach(i => {
