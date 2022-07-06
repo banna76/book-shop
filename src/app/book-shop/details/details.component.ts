@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-details',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public dialogRef: MatDialogRef<DetailsComponent>,
+    @Inject(MAT_DIALOG_DATA)  public dialogData: any
+  ) { }
 
   ngOnInit(): void {
+    if("thumbnail" in this.dialogData){
+      this.dialogData.thumbnail = `${this.dialogData.thumbnail}`
+      this.dialogData.author.thumbnail = `${this.dialogData.author.thumbnail}`
+    }
   }
-
 }

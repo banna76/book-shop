@@ -1,6 +1,7 @@
 .nav__icon {
     width: 20px;
     height: 20px;
+    cursor: pointer;
 }
 .title-price{
   font-size: 20px;
@@ -17,9 +18,16 @@
     margin: 0 5px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
     min-height: 230px;
-    cursor: pointer;
     &:hover{
       transform: scale(1.05);
       box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
     }
+  }
+
+  button{
+    cursor: pointer;
+  }
+
+  img{
+    cursor: pointer;
   }

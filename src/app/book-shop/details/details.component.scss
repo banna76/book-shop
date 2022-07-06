@@ -1,0 +1,53 @@
+.nav__icon {
+  width: 20px;
+  height: 20px;
+}
+.title-price{
+font-size: 40px;
+color: rgb(236, 5, 5);
+margin: 0 5px;
+}
+
+
+.detail-div{
+  margin: 0;
+  padding: 10px;
+  height: 85vh;
+}
+
+.basket-btn{
+  padding: 12px;
+  color: #fff;
+  background-color: rgb(220, 147, 1);
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  border-radius: 10px;
+  margin-top: 11px;
+  &:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.grid2{
+  display: grid;
+  grid-template-columns: auto;
+  grid-auto-flow: column;
+}
+
+.image-cropper {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+
+  &:img {
+    display: inline;
+    margin: 0 auto;
+    height: 100%;
+    width: auto;
+  }
+}
+

@@ -29,7 +29,8 @@ import { Book } from '../../../mock-data/models';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private apollo:Apollo) { }
+  constructor(
+    private apollo:Apollo) { }
 
   books: Book[] = [];
   ngOnInit(): void {

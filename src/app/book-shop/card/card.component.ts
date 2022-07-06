@@ -1,5 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Book } from './../../../mock-data/models';
+import { DetailsComponent } from '../details/details.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-card',
@@ -20,7 +22,7 @@ export class CardComponent implements OnInit {
       thumbnail:  'no-photo.jpg',
     }
   }
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
     if("thumbnail" in this.inputcard){
@@ -28,6 +30,16 @@ export class CardComponent implements OnInit {
       this.inputcard.author.thumbnail = `${this.inputcard.author.thumbnail}`
 
     }
+  }
+
+  openDialog(): void {
+    this.dialog.open(DetailsComponent, {
+      width: '95%',
+      height: '95%',
+      disableClose: false,
+      autoFocus: false,
+      data: this.inputcard
+    });
   }
 
 }
