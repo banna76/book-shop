@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo, gql, QueryRef} from 'apollo-angular';
-import { Book } from '../../../mock-data/models';
+import { Book } from '../mock-data/models';
 
 /**
  * get server current time

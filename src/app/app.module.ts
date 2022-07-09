@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EffectsModule } from '@ngrx/effects';
     GraphQLModule,
     HttpClientModule,
     MatCardModule,
-    EffectsModule.forRoot([])
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

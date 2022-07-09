@@ -1,5 +1,5 @@
 import { Component, OnInit, Input} from '@angular/core';
-import { Book } from './../../../mock-data/models';
+import { Book } from '../mock-data/models';
 import { DetailsComponent } from '../details/details.component';
 import { MatDialog } from '@angular/material/dialog';
 
