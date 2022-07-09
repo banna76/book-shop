@@ -1,18 +1,20 @@
 <div>
     <div>
         <h1> Top Collection </h1>
-        <div *ngIf="books" class="slide">
+        <div *ngIf="books; else elseTopBlock" class="slide">
             <div *ngFor="let book of books">
                 <app-card [inputcard]="book"></app-card>
             </div>
         </div>
+        <ng-template #elseTopBlock>No Data found!</ng-template>
     </div>
     <div>
         <h1> More Collection </h1>
-        <div *ngIf="books" class="panel">
+        <div *ngIf="books; else elseMoreBlock" class="panel">
             <div *ngFor="let book of books">
                 <app-panel [inputpanel]="book"></app-panel>
             </div>
         </div>
+        <ng-template #elseMoreBlock>No Data found!</ng-template>
     </div>
 </div>

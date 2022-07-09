@@ -1,7 +1,7 @@
 <mat-card class="detail-div" *ngIf="dialogData">
   <div class="grid2">
     <div>  <img [src]="dialogData?.thumbnail" width="250"> </div>
-    <div>
+    <div style="margin-left:15%">
       <div style="margin-top:10px; min-height: 38px;font-weight: bold;">{{dialogData?.title }}</div>
       <div>
         <div class="title-price">{{dialogData?.price}}{{dialogData?.currency}}</div>
@@ -21,7 +21,7 @@
     </div>
     </div>
   </div>
-  <div style="text-align:left;">
+  <div style="text-align:left;margin-top:40px;">
       <div style="font-weight:bold;margin:5px 0"> Description </div>
       <div>{{dialogData?.description}}</div>
   </div>

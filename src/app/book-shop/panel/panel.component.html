@@ -1,6 +1,6 @@
 <mat-card class="panel-div" *ngIf="inputpanel">
-    <img [src]="inputpanel?.thumbnail" width="150">
-    <div style="margin-top:10px; min-height: 38px;font-weight: bold;">{{inputpanel?.title }}</div>
+    <img (click)="openDialog()" [src]="inputpanel?.thumbnail" width="150">
+    <div style="margin-top:10px; min-height: 38px;font-weight: bold; cursor: pointer;" (click)="openDialog()">{{inputpanel?.title }}</div>
     <div class="grid2">
         <div>
             <div class="title-price">{{inputpanel?.price}}{{inputpanel?.currency}}</div>

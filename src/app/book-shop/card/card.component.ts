@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Book } from './../../../mock-data/models';
 import { DetailsComponent } from '../details/details.component';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-card',
@@ -31,7 +31,7 @@ export class CardComponent implements OnInit {
 
     }
   }
-
+  
   openDialog(): void {
     this.dialog.open(DetailsComponent, {
       width: '95%',
