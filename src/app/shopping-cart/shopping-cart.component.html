@@ -1,29 +1,29 @@
 <div class="basket" (click)="showCart =!showCart">
-    <mat-icon class="nav__icon" svgIcon="shopping" [matBadge]="totalItem" matBadgeColor="warn"></mat-icon>
+    <mat-icon class="nav__icon" svgIcon="shopping" [matBadge]="countProducts$ | async" matBadgeColor="warn"></mat-icon>
 </div>
 <div class="cart" *ngIf="showCart;">
-    <div *ngIf="totalItem;  else elseBlock">
+    <div *ngIf="cartItems$ | async;  else elseBlock">
         <table>
-            <tr *ngFor="let item of items">
+            <tr *ngFor="let item of ( cartItems$ | async )">
                 <td>
-                    <img (click)="openDialog(item)" [src]="item?.thumbnail" width="50">
+                    <img (click)="openDialog(item.product)" [src]="item?.product?.thumbnail" width="50">
                 </td>
                 <td>
-                    {{item?.title | slice:0:35 }}<br>
-                     <div>Amount: {{item?.amount}}</div>
+                    {{item?.product?.title | slice:0:35 }}<br>
+                     <div>Amount: {{item?.count}}</div>
                      <div>
-                        <button mat-button style="margin-right: 20px;">+</button>
-                        <button mat-button>-</button>
+                        <button mat-button style="margin-right: 20px;" (click)="more(item)"> + </button>
+                        <button mat-button (click)="less(item)"> - </button>
                     </div>
                 </td>
                 <td>
-                    {{item.amount * item.price}}€
+                    {{item.count * item.product.price | number : '1.2-2'}}€
                 </td>
             </tr>
             <tr>
                 <td> Total </td> 
-                 <td>{{countProducts$ | async}} </td>
-                 <td>{{totalPrice$ | async}}€</td>
+                 <td> </td>
+                 <td>{{totalPrice$ | async | number : '1.2-2'}}€</td>
             </tr>
         </table>
        <div style="margin-top: 10px;"> 

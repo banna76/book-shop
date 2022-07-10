@@ -8,6 +8,7 @@ import { Book } from '../mock-data/models';
  export const GET_ALL_BOOKS =  gql`
  query getBooks{
   books {
+    id
     title
     author {
       firstName

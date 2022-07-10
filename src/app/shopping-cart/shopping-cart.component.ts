@@ -3,9 +3,9 @@ import { Book } from '../book-shop/mock-data/models';
 import { MatDialog } from '@angular/material/dialog';
 import { DetailsComponent } from '../book-shop/details/details.component';
 import { Store } from '@ngrx/store';
-import { clearCart } from '../book-shop/store/actions/cart.action';
+import { clearCart, removeProduct, addProduct } from '../book-shop/store/actions/cart.action';
 import { Observable } from 'rxjs';
-import { selectCountProducts, selectTotalPrice } from '../book-shop/store/selectors/cart.selector';
+import { selectCountProducts, selectTotalPrice, ProductGroup, selectGroupedCartEntries } from '../book-shop/store/selectors/cart.selector';
 
 @Component({
   selector: 'app-shopping-cart',
@@ -13,33 +13,23 @@ import { selectCountProducts, selectTotalPrice } from '../book-shop/store/select
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-  public items: Book[] = [{
-    id:0,
-    title: 'TEST',
-    description: 'TEST',
-    price: 0,
-    thumbnail: 'assets/img/no-pic.jpg',
-    currency: '€',
-    amount: 1,
-    author: {
-      firstName: 'TEST',
-      lastName: 'TEST',
-      thumbnail:  'assets/img/no-photo.jpg',
-    }
-  }];
-
-  totalItem = 5;
-  showCart = (this.totalItem)? true: false;
+  showCart:boolean = false;
   countProducts$: Observable<number> | undefined;
   totalPrice$: Observable<number> | undefined;
-
+  cartItems$: Observable<ProductGroup[]> | undefined;
   constructor(
     private dialog: MatDialog, 
     private store: Store) { }
 
   ngOnInit(): void {
     this.countProducts$ = this.store.select(selectCountProducts);
-    this.totalPrice$ = this.store.select(selectTotalPrice)
+    this.totalPrice$ = this.store.select(selectTotalPrice);
+    this.cartItems$  = this.store.select(selectGroupedCartEntries);
+    this.totalPrice$.subscribe( (res)=> {
+      if(res > 0){
+        this.showCart = true;
+      }
+    })
   }
 
   openDialog(item:Book): void {
@@ -53,7 +43,24 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   removeAll(){
-    this.store.dispatch(clearCart())
+    this.showCart = false;
+    this.store.dispatch(clearCart());
   }
 
+  more(item: ProductGroup){
+    this.store.dispatch(addProduct(item.product));
+  }
+
+  less(item: ProductGroup){
+    this.store.dispatch(removeProduct(item.product));
+    if(this.totalPrice$){
+      this.totalPrice$.subscribe( (res)=> {
+        if(res > 0){
+          this.showCart = true;
+        }else{
+          this.showCart = false;
+        }
+      })
+    }
+  }
 }
