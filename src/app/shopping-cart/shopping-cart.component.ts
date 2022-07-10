@@ -25,11 +25,11 @@ export class ShoppingCartComponent implements OnInit {
     this.countProducts$ = this.store.select(selectCountProducts);
     this.totalPrice$ = this.store.select(selectTotalPrice);
     this.cartItems$  = this.store.select(selectGroupedCartEntries);
-    this.totalPrice$.subscribe( (res)=> {
-      if(res > 0){
-        this.showCart = true;
-      }
-    })
+    // this.totalPrice$.subscribe( (res)=> {
+    //   if(res > 0){
+    //     this.showCart = true;
+    //   }
+    // })
   }
 
   openDialog(item:Book): void {

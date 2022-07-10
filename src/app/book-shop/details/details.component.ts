@@ -14,9 +14,5 @@ export class DetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if("thumbnail" in this.dialogData){
-      this.dialogData.thumbnail = `${this.dialogData.thumbnail}`
-      this.dialogData.author.thumbnail = `${this.dialogData.author.thumbnail}`
-    }
   }
 }

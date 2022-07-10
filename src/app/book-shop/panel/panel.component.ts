@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Book } from '../mock-data/models';
 import { DetailsComponent } from '../details/details.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { addProduct } from '../store/actions/cart.action';
 
 
 @Component({
@@ -24,7 +26,9 @@ export class PanelComponent implements OnInit {
       thumbnail:  'assets/img/no-photo.jpg',
     }
   }
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    private store: Store) { }
 
   ngOnInit(): void {
     if("thumbnail" in this.inputpanel){
@@ -41,5 +45,9 @@ export class PanelComponent implements OnInit {
       autoFocus: false,
       data: this.inputpanel
     });
+  }
+
+  buyBook(){
+    this.store.dispatch(addProduct(this.inputpanel));
   }
 }
