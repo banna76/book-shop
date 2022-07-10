@@ -8,12 +8,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { EffectsModule } from '@ngrx/effects';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { StoreModule } from '@ngrx/store';
+import { cartReducer } from './book-shop/store/reducers/cart.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -23,8 +29,13 @@ import { StoreModule } from '@ngrx/store';
     GraphQLModule,
     HttpClientModule,
     MatCardModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
+    MatBadgeModule,
+    MatDialogModule,
+    StoreModule.forRoot({cartEntries: cartReducer}),
+    StoreDevtoolsModule.instrument({
+      name: 'Book Store',
+      maxAge: 10 // number of states to retain
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

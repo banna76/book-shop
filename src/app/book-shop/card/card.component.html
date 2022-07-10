@@ -2,7 +2,10 @@
     <img (click)="openDialog()" [src]="inputcard?.thumbnail" width="100">
     <div style="margin-top:10px; min-height: 38px;cursor: pointer;" (click)="openDialog()">{{inputcard?.title | slice:0:35 }}</div>
     <div style="display:flex;justify-content:center;margin-top: 5px;">
-        <div class="title-price">{{inputcard?.price}}{{inputcard?.currency}}</div>
+        <div>
+            <div class="title-price">{{inputcard?.price}}{{inputcard?.currency}}</div>
+            <div style="font-size:x-small;">Price incl. {{(inputcard.price * 0.07) | number : '1.2-2'}} € (7%) VAT</div>
+        </div>
         <button mat-button><mat-icon class="nav__icon" svgIcon="cart"></mat-icon></button>
     </div>
 </mat-card>

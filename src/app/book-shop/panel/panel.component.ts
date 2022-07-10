@@ -11,15 +11,17 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class PanelComponent implements OnInit {
   @Input() inputpanel: Book = {
+    id: 0,
     title: 'TEST',
     description: 'TEST',
     price: 0,
-    thumbnail: 'no-pic.jpg',
+    thumbnail: 'assets/img/no-pic.jpg',
     currency: '€',
+    amount: 1,
     author: {
       firstName: 'TEST',
       lastName: 'TEST',
-      thumbnail:  'no-photo.jpg',
+      thumbnail:  'assets/img/no-photo.jpg',
     }
   }
   constructor(public dialog: MatDialog) { }

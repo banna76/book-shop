@@ -2,6 +2,8 @@ import { Component, OnInit, Input} from '@angular/core';
 import { Book } from '../mock-data/models';
 import { DetailsComponent } from '../details/details.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { addProduct } from '../store/actions/cart.action';
 
 @Component({
   selector: 'app-card',
@@ -11,18 +13,22 @@ import { MatDialog } from '@angular/material/dialog';
 export class CardComponent implements OnInit {
   
   @Input() inputcard: Book = {
+    id: 0,
     title: 'TEST',
     description: 'TEST',
     price: 0,
-    thumbnail: 'no-pic.jpg',
+    thumbnail: 'assets/img/no-pic.jpg',
     currency: '€',
+    amount: 1,
     author: {
       firstName: 'TEST',
       lastName: 'TEST',
-      thumbnail:  'no-photo.jpg',
+      thumbnail:  'assets/img/no-photo.jpg',
     }
   }
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    private store: Store) { }
 
   ngOnInit(): void {
     if("thumbnail" in this.inputcard){
@@ -42,4 +48,7 @@ export class CardComponent implements OnInit {
     });
   }
 
+  buyBook(){
+    this.store.dispatch(addProduct(this.inputcard));
+  }
 }

@@ -1,0 +1,34 @@
+<div class="basket" (click)="showCart =!showCart">
+    <mat-icon class="nav__icon" svgIcon="shopping" [matBadge]="totalItem" matBadgeColor="warn"></mat-icon>
+</div>
+<div class="cart" *ngIf="showCart;">
+    <div *ngIf="totalItem;  else elseBlock">
+        <table>
+            <tr *ngFor="let item of items">
+                <td>
+                    <img (click)="openDialog(item)" [src]="item?.thumbnail" width="50">
+                </td>
+                <td>
+                    {{item?.title | slice:0:35 }}<br>
+                     <div>Amount: {{item?.amount}}</div>
+                     <div>
+                        <button mat-button style="margin-right: 20px;">+</button>
+                        <button mat-button>-</button>
+                    </div>
+                </td>
+                <td>
+                    {{item.amount * item.price}}€
+                </td>
+            </tr>
+            <tr>
+                <td> Total </td> 
+                 <td>{{countProducts$ | async}} </td>
+                 <td>{{totalPrice$ | async}}€</td>
+            </tr>
+        </table>
+       <div style="margin-top: 10px;"> 
+        <button mat-button (click)="removeAll()"> Remove all items</button>
+        </div>
+    </div>
+    <ng-template #elseBlock>Shopping cart is empty!</ng-template>
+</div>
