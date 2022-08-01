@@ -9,7 +9,6 @@ import { DetailsComponent } from './details/details.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialogModule } from '@angular/material/dialog';
-import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [

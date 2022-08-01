@@ -12,7 +12,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { ShoppingCartComponent } from './book-shop/shopping-cart/shopping-cart.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StoreModule } from '@ngrx/store';
-import { cartReducer } from './book-shop/store/reducers/cart.reducer';
+import { cartReducer, metaReducerLocalStorage } from './book-shop/store/reducers/cart.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 
@@ -31,7 +31,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatCardModule,
     MatBadgeModule,
     MatDialogModule,
-    StoreModule.forRoot({cartEntries: cartReducer}),
+    StoreModule.forRoot({cartEntries: cartReducer}, { metaReducers: [ metaReducerLocalStorage ] }),
     StoreDevtoolsModule.instrument({
       name: 'Book Store',
       maxAge: 10 // number of states to retain
