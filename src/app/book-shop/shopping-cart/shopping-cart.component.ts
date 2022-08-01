@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Book } from '../book-shop/mock-data/models';
+import { Book } from '../mock-data/models';
 import { MatDialog } from '@angular/material/dialog';
-import { DetailsComponent } from '../book-shop/details/details.component';
+import { DetailsComponent } from '../details/details.component';
 import { Store } from '@ngrx/store';
-import { clearCart, removeProduct, addProduct } from '../book-shop/store/actions/cart.action';
+import { clearCart, removeProduct, addProduct } from '../store/actions/cart.action';
 import { Observable } from 'rxjs';
-import { selectCountProducts, selectTotalPrice, ProductGroup, selectGroupedCartEntries } from '../book-shop/store/selectors/cart.selector';
+import { selectCountProducts, selectTotalPrice, ProductGroup, selectGroupedCartEntries } from '../store/selectors/cart.selector';
 
 @Component({
   selector: 'app-shopping-cart',

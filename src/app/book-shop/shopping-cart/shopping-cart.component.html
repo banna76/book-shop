@@ -1,4 +1,4 @@
-<div class="basket" (click)="showCart =!showCart">
+<div class="basket" (click)="showCart = !showCart">
     <mat-icon class="nav__icon" svgIcon="shopping" [matBadge]="countProducts$ | async" matBadgeColor="warn"></mat-icon>
 </div>
 <div class="cart" *ngIf="showCart;">

@@ -8,7 +8,13 @@
         <div style="font-size:small;">Price incl. {{(dialogData.price * 0.07) | number : '1.2-2'}} € (7%) VAT</div>
       </div>
       <div>
-        <button mat-button class="basket-btn"> Add to Basket</button>  
+        <button mat-button class="basket-btn" (click)="buyBook()"> Add to Basket</button>  
+      </div>
+      <div *ngIf="countProducts$  | async" style="margin: 20px 0 10px;">
+        <a routerLink="shopping-cart">
+          {{countProducts$  | async}} items with total price of {{totalPrice$  | async}}€ are in the basket.
+          Please click here to go to shopping cart.
+        </a>
       </div>
       <div style="margin: 20px 0 10px;display: flex;">
         <div class="image-cropper">
