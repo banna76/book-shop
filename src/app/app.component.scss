@@ -311,6 +311,24 @@
     margin: 0 10px;
 }
 
+.cart{
+  position:absolute;
+  top: 35px;
+  right: 45px;
+  background-color: #fff;
+  color: #24292e;
+  border: #c2c3c4 1px solid;
+  padding: 10px;
+  border-radius: 5px;
+  z-index: 10;
+  min-width: 200px;
+}
+
+.basket{
+  margin-top:20px;
+  margin-right:20px; 
+  cursor: pointer;  
+}
 
 
 

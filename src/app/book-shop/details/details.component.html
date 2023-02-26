@@ -11,7 +11,7 @@
         <button mat-button class="basket-btn" (click)="buyBook()"> Add to Basket</button>  
       </div>
       <div *ngIf="countProducts$  | async" style="margin: 20px 0 10px;">
-        <a routerLink="shopping-cart">
+        <a routerLink="shopping-cart" (click)="dialogRef.close()">
           {{countProducts$  | async}} items with total price of {{totalPrice$  | async}}€ are in the basket.
           Please click here to go to shopping cart.
         </a>

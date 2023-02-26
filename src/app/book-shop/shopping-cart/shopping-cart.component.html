@@ -1,7 +1,4 @@
-<div class="basket" (click)="showCart = !showCart">
-    <mat-icon class="nav__icon" svgIcon="shopping" [matBadge]="countProducts$ | async" matBadgeColor="warn"></mat-icon>
-</div>
-<div class="cart" *ngIf="showCart;">
+<mat-card>
     <div *ngIf="cartItems$ | async;  else elseBlock">
         <table>
             <tr *ngFor="let item of ( cartItems$ | async )">
@@ -31,4 +28,4 @@
         </div>
     </div>
     <ng-template #elseBlock>Shopping cart is empty!</ng-template>
-</div>
+</mat-card>

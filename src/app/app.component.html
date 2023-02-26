@@ -11,8 +11,13 @@
     <mat-icon class="nav__icon" svgIcon="book"></mat-icon>
   </a>
   <span>Book Shop</span>
-    <div class="spacer"></div>
+  <div class="spacer"></div>
+  <div class="basket" (click)="showCart = !showCart">
+      <mat-icon class="nav__icon" svgIcon="shopping" [matBadge]="countProducts$ | async" matBadgeColor="warn"></mat-icon>
+  </div>
+  <div class="cart" *ngIf="showCart;">
     <app-shopping-cart></app-shopping-cart>
+  </div>
 </div>
 
 <div class="content" role="main">
