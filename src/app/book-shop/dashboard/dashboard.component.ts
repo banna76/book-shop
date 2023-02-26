@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo, gql, QueryRef} from 'apollo-angular';
+import { Apollo, gql } from 'apollo-angular';
 import { Book } from '../mock-data/models';
+import { pluck, shareReplay } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 /**
  * get server current time
@@ -33,25 +35,22 @@ export class DashboardComponent implements OnInit {
   constructor(
     private apollo:Apollo) { }
 
-  books: Book[] = [];
+  books$: Observable<any> | undefined;
+
   ngOnInit(): void {
-    this.getAllBooks();
+    const source$ = this.getAllBooks();
+    this.books$ = source$.pipe(pluck('data', 'books'));
   }
 
   /**
    * get all books
    */
   getAllBooks(){
-    this.apollo.watchQuery({
+    return this.apollo.watchQuery({
       query: GET_ALL_BOOKS,
       fetchPolicy: 'no-cache',
       errorPolicy: 'all'
-    }).valueChanges
-    .subscribe((result: any) => {
-      if("books" in result.data){
-        this.books = result.data['books'];
-        console.log(this.books);
-      }
-    });
+    })
+    .valueChanges.pipe(shareReplay(1));
   }
 }

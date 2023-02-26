@@ -1,7 +1,7 @@
 <div>
     <div>
         <h1> Top Collection </h1>
-        <div *ngIf="books; else elseTopBlock" class="slide">
+        <div *ngIf="books$ | async as books; else elseTopBlock" class="slide">
             <div *ngFor="let book of books">
                 <app-card [inputcard]="book"></app-card>
             </div>
@@ -10,7 +10,7 @@
     </div>
     <div>
         <h1> More Collection </h1>
-        <div *ngIf="books; else elseMoreBlock" class="panel">
+        <div *ngIf="books$ | async as books; else elseMoreBlock" class="panel">
             <div *ngFor="let book of books">
                 <app-panel [inputpanel]="book"></app-panel>
             </div>
