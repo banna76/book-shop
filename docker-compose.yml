@@ -1,0 +1,10 @@
+version: '3'
+services:
+  frontend:
+    image: book-shop:latest
+    ports:
+      - 8080:80
+  backend:
+    image: server-app:latest
+    ports:
+      - 8000:8000
